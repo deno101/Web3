@@ -1,62 +1,67 @@
 import { votingsys_backend } from "../../declarations/votingsys_backend";
 
-// document.querySelector("form").addEventListener("submit", async (e) => {
-//   e.preventDefault();
-//   const button = e.target.querySelector("button");
+let form = document.querySelector("form");
+if (form != undefined) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = e.target.querySelector("button");
 
-//   const name = document.getElementById("name").value.toString();
+    const clerk_name = document.getElementById("clerk_name").value.toString();
+    const polling_station = document.getElementById("polling_station").value.toString();
+    const votes = document.getElementById("votes").value.toString();
 
-//   button.setAttribute("disabled", true);
 
-//   // Interact with foo actor, calling the greet method
-//   const greeting = await votingsys_backend.greet(name);
+    // Interact with foo actor, calling the greet method
+    await votingsys_backend.addResult(polling_station, clerk_name, parseInt(votes));
 
-//   button.removeAttribute("disabled");
+    const urlParams = new URLSearchParams(window.location.search);
+    const canisterId = urlParams.get('canisterId');
 
-//   document.getElementById("greeting").innerText = greeting;
+    // works only in firefox 21+
+    let destination = window.location.origin + "/" + "table.html?canisterId=" + canisterId;
 
-//   return false;
-// });
+    window.location.replace(destination);
 
-await votingsys_backend.addResult("one", "two", 45);
+    return false;
+  });
 
+}
 let rst = document.getElementById("container");
+
+console.log(rst);
+
 
 if (rst != undefined) {
   let data = await votingsys_backend.getResults()
-  data = data[0][0];
+  data = data;
 
-  console.log(data[0][0]);
+  for (var i = 0; i < data.length; i++) {
+    let v = data[i]
 
-    data.forEach((k, v) => {
+    rst.innerHTML += `<tr>
+      <td>${v.clerk_name}</td>
+      <td>${v.polling_station}</td>
+      <td>${v.votes}</td>
+      <td>${v.time}</td>
+    </tr>`
 
-      console.log(v);
 
-      rst.innerHTML += `<div class="" id="container">
-    <div class="card m-4">
-      <div class="card-header">
-        ${v.polling_station}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">${v.time}</h5>
-        <p class="card-text">${v.votes} </p>
-      </div>
-    </div>
-  </div>`
-
-    })
+  }
 }
 
-document.getElementById("form").addEventListener("click", () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const canisterId = urlParams.get('canisterId');
+let go_to = document.getElementById("go_to_form");
 
-  // works only in firefox 21+
-  let destination = window.location.origin + "/" + "form.html?canisterId=" + canisterId;
+if (go_to != undefined) {
+  go_to.addEventListener("click", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const canisterId = urlParams.get('canisterId');
 
-  console.log(destination);
+    // works only in firefox 21+
+    let destination = window.location.origin + "/" + "form.html?canisterId=" + canisterId;
 
-  window.location.replace(destination);
-})
+    console.log(destination);
 
+    window.location.replace(destination);
+  });
 
+} ''

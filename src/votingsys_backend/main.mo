@@ -3,6 +3,7 @@ import Time "mo:base/Time";
 import Int "mo:base/Int";
 import Nat "mo:base/Nat";
 import List "mo:base/List";
+import Buffer "mo:base/Buffer";
 
 actor {
   public type Record = {
@@ -12,9 +13,8 @@ actor {
     votes : Nat;
   };
 
-  type List<Record> = ?(Record, List<Record>);
 
-  var results : List<Record> = List.nil();
+  var results = Buffer.Buffer<Record>(100);
 
   public func addResult(polling_station : Text, clerk_name : Text, votes : Nat) : async () {
     let r : Record = {
@@ -24,11 +24,11 @@ actor {
       votes = votes;
     };
 
-    results := List.push<Record>(r, results);
+    results.add(r);
   };
 
-  public func getResults() : async List<Record> {
-    return results;
+  public func getResults() : async [Record] {
+    return Buffer.toArray(results);
   };
 
 };
