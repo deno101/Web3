@@ -10,6 +10,7 @@
       ],
       "frontend": {
         "entrypoint": "src/votingsys_frontend/src/index.html"
+        
       },
       "source": [
         "src/votingsys_frontend/assets",

@@ -1,4 +1,58 @@
 <!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #80a4d8;
+  text-align: left;
+  padding: 8px;
+}
+h2{
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #80a4d8;
+}
+</style>
+</head>
+<body>
+
+<h2>Overall Votes per Stations</h2>
+
+<table>
+  <tr>
+    <th>Clerk Name</th>
+    <th>Polling Station</th>
+    <th>Total Votes</th>
+    <th>Time of Submission</th>
+  </tr>
+
+  <tr>
+    <td>Alfreds Kamau</td>
+    <td>Nyadiwa Primary</td>
+    <td>400</td>
+    <td>6.42 pm</td>
+  </tr>
+
+  <tr>
+    <td>Millicent Nyakeya</td>
+    <td>Kabiria Primary</td>
+    <td>120</td>
+    <td>6.42 pm</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,9 +62,10 @@
     <link rel="icon" href="favicon.ico" />
     <link type="text/css" rel="stylesheet" href="main.css" />
   </head>
-  <body>
-    <main>
-      <h4>Casting your vote with us ensures not only your voice is heard but also that it travels</h4>
+
+  <body> 
+    <main> 
+     <h4>Casting your vote with us ensures not only your voice is heard but also that it travels</h4>
         <h4>  securely through our state-of-the-art systems,safeguarding the integrity of your </h4>
       <h4> valuable contribution to the democratic process.</h4>
 
@@ -18,7 +73,33 @@
 
       <a href="form.html">
         <button>Get Started</button>
-    </a>
-    </main>
-  </body>
-</html>
+    </a> 
+  
+     </main>
+  </body> 
+
+  <body>
+    <div class="signup">
+        <div class="above">
+        
+            <h2 id="heading">Submit Votes</h2>
+        </div>
+        <div class="form">
+            <form action="">
+                <label for="clerk">Clerk</label><br><br>
+                <input type="clerk" placeholder="Your name" required><br><br>
+                <label for="station">Polling Station</label><br><br>
+                <input type="station" placeholder="Polling Station"required><br><br>
+                <label for="votes">Total Votes</label><br><br>
+                <input type="votes" placeholder="votes" required><br>
+                <label for="time">Submission Time</label><br><br>
+                <input type="datetime-local" placeholder="time" required><br>
+                <a href="page2.html"><button id="btn_signup" type="submit">Submit</button></a>
+            </form>
+        </div>
+
+    </div>
+
+ </body>
+
+</html> -->
