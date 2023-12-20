@@ -1,20 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>votingsys</title>
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="main.css" />
+</head>
+
 <body>
+    <div class="signup">
+        <div class="above">
 
-<h2>HTML Forms</h2>
+            <h2 id="heading">Submit Votes</h2>
+        </div>
+        <div class="form">
+            <form action="">
+                <label for="clerk">Clerk</label><br><br>
+                <input type="clerk" placeholder="Your name" required><br><br>
+                <label for="station">Polling Station</label><br><br>
+                <input type="station" placeholder="Polling Station" required><br><br>
+                <label for="votes">Total Votes</label><br><br>
+                <input type="votes" placeholder="votes" required><br>
+                <label for="time">Submission Time</label><br><br>
+                <input type="datetime-local" placeholder="time" required><br>
+                <a href="page2.html"><button id="btn_signup" type="submit">Submit</button></a>
+            </form>
+        </div>
 
-<form >
-  <label for="clerk">Clerk:</label><br>
-  <input type="text" id="clerk" name="clerk" value="John"><br>
-  <label for="station">Polling Station:</label><br>
-  <input type="text" id="station" name="station" value="Kabete Primary"><br>
-  <label for="time">Submission Time:</label><br>
-  <input type="time" id="myTime" value="22:15:00"><br>
-  <br>
-  <input type="submit" value="Submit">
-</form> 
-
-
+    </div>
 </body>
+
 </html>
